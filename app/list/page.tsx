@@ -1,6 +1,6 @@
-import CarsLandingList from "@/components/CarsLandingList";
+import PopularCars from "@/components/PopularCars";
 import React from "react";
 
 export default function page() {
-  return <CarsLandingList></CarsLandingList>;
+  return <PopularCars></PopularCars>;
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import CarsLandingList from "@/components/CarsLandingList";
+import PopularCars from "@/components/PopularCars";
 import SwiperComponent from "@/components/swiper/Swiper";
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
         CARS
       </h1>
       <div className="container mx-auto p-4">
-        <CarsLandingList></CarsLandingList>
+        <PopularCars></PopularCars>
       </div>
     </div>
   );
