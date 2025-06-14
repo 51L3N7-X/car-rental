@@ -1,4 +1,3 @@
-"use client";
 
 import LandPageHome from "@/sections/landpage/main/home";
 

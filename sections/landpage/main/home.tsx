@@ -1,3 +1,5 @@
+"use client"
+
 import Footer from "@/sections/landpage/Footer";
 import HeroSection from "@/sections/landpage/HeroSection";
 import HowItWorks from "@/sections/landpage/HowItWorks";
