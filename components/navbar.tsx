@@ -22,9 +22,6 @@ export function NavBar() {
     : [
         { name: "Book", href: "/book" },
         { name: "Car List", href: "/list" },
-        ...(session.data?.user
-          ? [{ name: "Dashboard", href: "/dashboard" }]
-          : []),
       ];
 
   return (
@@ -81,7 +78,7 @@ export function NavBar() {
       <Link href="/" className="mr-6 hidden lg:flex" prefetch={false}>
         <div className="flex items-center space-x-2">
           <Car className="h-8 w-8 text-blue-600" />
-          <span className="text-2xl font-bold text-gray-900">RentCar</span>
+          <span className="text-2xl font-bold text-gray-900 dark:text-gray-50">RentCar</span>
         </div>
       </Link>
       <nav className="ml-auto hidden lg:flex gap-6">

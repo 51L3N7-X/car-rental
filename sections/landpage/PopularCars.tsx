@@ -19,12 +19,10 @@ export default function PopularCars() {
       });
 
       if (!response.ok) {
-        console.error(`API Error: ${response.status} ${response.statusText}`);
         throw new Error("Failed to fetch cars");
       }
 
-      const data = await response.json();
-      return data;
+      return await response.json();
     } catch (error) {
       console.error("fetchCars error:", error);
       return [];
@@ -36,40 +34,51 @@ export default function PopularCars() {
     queryFn: fetchCars,
   });
 
-  if (isLoading) return <p>Loading...</p>;
-
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white dark:bg-gray-950 transition-colors">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Popular Cars
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-gray-600 dark:text-gray-400">
             Choose from our most loved vehicles
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {cars?.length &&
-            cars.map((car, index) => (
-              <Link href={`/car/${car.id}`} key={index}>
-                <CardComponent
-                  name={car.name}
-                  imageUrl={car.image}
-                  price={car.price}
-                />
-              </Link>
-            ))}
-        </div>
+        {isLoading ? (
+          <p className="text-center text-gray-500 dark:text-gray-400">
+            Loading...
+          </p>
+        ) : (
+          <>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {cars?.length ? (
+                cars.map((car) => (
+                  <Link href={`/car/${car.id}`} key={car.id}>
+                    <CardComponent
+                      name={car.name}
+                      imageUrl={car.image}
+                      price={car.price}
+                    />
+                  </Link>
+                ))
+              ) : (
+                <p className="col-span-full text-center text-gray-500">
+                  No cars available.
+                </p>
+              )}
+            </div>
 
-        <div className="text-center mt-12">
-          <Link href="/list">
-            <Button variant="outline" size="lg" className="px-8">
-              View All Cars
-            </Button>
-          </Link>
-        </div>
+            <div className="text-center mt-12">
+              <Link href="/list">
+                <Button variant="outline" size="lg" className="px-8">
+                  View All Cars
+                </Button>
+              </Link>
+            </div>
+          </>
+        )}
       </div>
     </section>
   );

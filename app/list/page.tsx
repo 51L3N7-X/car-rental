@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { CardComponent } from "@/components/CardComponent";
 import { Car } from "@/types/public";
@@ -22,8 +22,7 @@ export default function Page() {
         throw new Error("Failed to fetch cars");
       }
 
-      const data = await response.json();
-      return data;
+      return await response.json();
     } catch (error) {
       console.error("fetchCars error:", error);
       return [];
@@ -35,18 +34,23 @@ export default function Page() {
     queryFn: fetchCars,
   });
 
-  if (isLoading) return <p>Loading...</p>;
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white dark:bg-gray-950 transition-colors min-h-screen">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Cars List</h2>
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Cars List
+          </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {cars?.length &&
-            cars.map((car, index) => (
-              <Link href={`/car/${car.id}`} key={index}>
+        {isLoading ? (
+          <p className="text-center text-gray-500 dark:text-gray-400">
+            Loading...
+          </p>
+        ) : cars?.length ? (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {cars.map((car) => (
+              <Link href={`/car/${car.id}`} key={car.id}>
                 <CardComponent
                   name={car.name}
                   imageUrl={car.image}
@@ -54,7 +58,12 @@ export default function Page() {
                 />
               </Link>
             ))}
-        </div>
+          </div>
+        ) : (
+          <p className="text-center text-gray-500 dark:text-gray-400">
+            No cars found.
+          </p>
+        )}
       </div>
     </section>
   );

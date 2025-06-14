@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import ClientProviders from "@/components/ClientProviders";
 import SessionProvider from "@/components/SessionProvider";
 import { getServerSession } from "next-auth";
+import FooterWrapper from "@/components/FooterWrapper";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -44,6 +45,7 @@ export default async function RootLayout({
             >
               <NavBar />
               {children}
+              <FooterWrapper></FooterWrapper>
             </ThemeProvider>
           </ClientProviders>
         </SessionProvider>
