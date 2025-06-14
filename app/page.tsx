@@ -1,18 +1,11 @@
 "use client";
 
-import PopularCars from "@/components/PopularCars";
-import SwiperComponent from "@/components/swiper/Swiper";
+import LandPageHome from "@/sections/landpage/main/home";
 
-export default function Home() {
+export default function MainPage() {
   return (
     <div className="overflow-hidden">
-      <SwiperComponent></SwiperComponent>
-      <h1 className="text-center text-9xl font-bold my-[120px] tracking-tighter">
-        CARS
-      </h1>
-      <div className="container mx-auto p-4">
-        <PopularCars></PopularCars>
-      </div>
+      <LandPageHome></LandPageHome>
     </div>
   );
 }

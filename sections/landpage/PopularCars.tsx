@@ -4,8 +4,8 @@ import { Car } from "@/types/public";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import React from "react";
-import { Button } from "./ui/button";
-import { CardComponent } from "./CardComponent";
+import { Button } from "../../components/ui/button";
+import { CardComponent } from "../../components/CardComponent";
 
 export default function PopularCars() {
   async function fetchCars(): Promise<Car[]> {
