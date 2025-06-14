@@ -15,7 +15,6 @@ import { Pencil, Trash } from "lucide-react";
 import { useState } from "react";
 import { AddOrEditItem } from "@/components/AddItemDialog";
 import { DeleteDialog } from "@/components/DeleteDialog";
-import { Separator } from "@/components/ui/separator";
 import { Car } from "@/types/public";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useSession } from "next-auth/react";
@@ -129,7 +128,7 @@ export default function DashboardPage() {
               <TableCell>{car.name}</TableCell>
               <TableCell>
                 <Image
-                  src={car.image || "/fallback_car.jpg"}
+                  src={car.image || "/fallback_car.webp"}
                   alt={car.name}
                   className="w-16 h-16 object-cover rounded-full"
                   width={64}
@@ -176,11 +175,12 @@ export default function DashboardPage() {
         carId={carIdToDelete}
       />
 
-      <Separator className="mb-2" />
+      {/* TODO: add section so the user can add ads images dynamically*/}
+      {/* <Separator className="mb-2" />
       <h1 className="text-2xl font-semibold my-4">Ads Images</h1>
       <Button className="mb-4" onClick={() => {}}>
         Add Image
-      </Button>
+      </Button> */}
     </div>
   );
 }

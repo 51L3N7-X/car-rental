@@ -1,9 +1,13 @@
+"use client";
+
 import { Car } from "@/types/public";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import Image from "next/image";
+
+// TODO: add pagination
 
 export default function CarsLandingList() {
   async function fetchCars(): Promise<Car[]> {
@@ -37,7 +41,7 @@ export default function CarsLandingList() {
   if (isLoading) return <p>Loading...</p>;
 
   return (
-    <>
+    <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold text-center mb-8">For Rental</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {cars?.length &&
@@ -51,7 +55,7 @@ export default function CarsLandingList() {
             </Link>
           ))}
       </div>
-    </>
+    </div>
   );
 }
 
@@ -73,7 +77,7 @@ function CardComponent({
       <CardHeader className="flex items-center justify-center">
         <div className="relative w-32 h-32 rounded-full overflow-hidden">
           <Image
-            src={imageUrl ?? "/fallback_car.jpg"}
+            src={imageUrl ?? "/fallback_car.webp"}
             alt={altText}
             fill
             style={{ objectFit: "cover" }}
