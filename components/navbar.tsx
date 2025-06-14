@@ -8,9 +8,9 @@ import { ComponentProps } from "react";
 import { signOut, useSession } from "next-auth/react";
 
 const navItems = [
-  { name: "Home", href: "#" },
-  { name: "Car List", href: "#" },
-  { name: "Book", href: "#" },
+  { name: "Home", href: "/" },
+  { name: "Car List", href: "/list" },
+  { name: "Book", href: "/book" },
 ];
 
 export function NavBar() {

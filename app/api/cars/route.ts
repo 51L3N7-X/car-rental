@@ -21,12 +21,12 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
-    // const token = request.headers.get("authorization")?.split(" ")[1];
+    const token = request.headers.get("authorization")?.split(" ")[1];
 
-    // if (!token) {
-    //   return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-    // }
-    // jwt.verify(token, SECRET_KEY);
+    if (!token) {
+      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+    }
+    jwt.verify(token, SECRET_KEY);
     const body = await request.json();
     await db.insert(cars).values({
       id: uuid(),

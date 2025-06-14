@@ -11,7 +11,9 @@ export const cars = sqliteTable("cars", {
 export const bookings = sqliteTable("bookings", {
   id: text("id").primaryKey(),
   carId: text("car_id").notNull(),
-  userName: text("user_name").notNull(),
+  userName: text("name").notNull(),
+  userPhone: text("phone").notNull(),
   startDate: text("start_date").notNull(),
   endDate: text("end_date").notNull(),
+  status: text("status").notNull().default("pending"),
 });
