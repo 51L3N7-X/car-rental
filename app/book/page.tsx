@@ -73,83 +73,89 @@ export default function BookCarPage() {
   });
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded shadow">
-      <h1 className="text-xl font-bold mb-4">Book a Car</h1>
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit((values) => mutation.mutate(values))}
-          className="space-y-4"
-        >
-          <FormField
-            control={form.control}
-            name="userName"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Your Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="John Doe" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="userPhone"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Phone Number</FormLabel>
-                <FormControl>
-                  <Input placeholder="e.g. +123456789" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="carId"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel htmlFor="carId">Car ID</FormLabel>
-                <FormControl>
-                  <Input id="carId" placeholder="Enter Car ID" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="startDate"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Start Date</FormLabel>
-                <FormControl>
-                  <Input type="date" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="endDate"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>End Date</FormLabel>
-                <FormControl>
-                  <Input type="date" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button type="submit" disabled={mutation.status === "pending"}>
-            {mutation.status === "pending" ? "Booking..." : "Book Now"}
-          </Button>
-        </form>
-      </Form>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="max-w-md w-full p-6 bg-white rounded-2xl shadow-2xl">
+        <h1 className="text-xl font-bold mb-4 text-center">Book a Car</h1>
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit((values) => mutation.mutate(values))}
+            className="space-y-4"
+          >
+            <FormField
+              control={form.control}
+              name="userName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Your Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="John Doe" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="userPhone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Phone Number</FormLabel>
+                  <FormControl>
+                    <Input placeholder="e.g. +123456789" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="carId"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel htmlFor="carId">Car ID</FormLabel>
+                  <FormControl>
+                    <Input id="carId" placeholder="Enter Car ID" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="startDate"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Start Date</FormLabel>
+                  <FormControl>
+                    <Input type="date" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="endDate"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>End Date</FormLabel>
+                  <FormControl>
+                    <Input type="date" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button
+              type="submit"
+              disabled={mutation.status === "pending"}
+              className="w-full bg-blue-600 hover:bg-blue-700"
+            >
+              {mutation.status === "pending" ? "Booking..." : "Book Now"}
+            </Button>
+          </form>
+        </Form>
+      </div>
     </div>
   );
 }

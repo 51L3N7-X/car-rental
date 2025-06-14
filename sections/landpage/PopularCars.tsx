@@ -64,9 +64,11 @@ export default function PopularCars() {
         </div>
 
         <div className="text-center mt-12">
-          <Button variant="outline" size="lg" className="px-8">
-            View All Cars
-          </Button>
+          <Link href="/list">
+            <Button variant="outline" size="lg" className="px-8">
+              View All Cars
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

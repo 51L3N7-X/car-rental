@@ -1,7 +1,8 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {  CheckCircle } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function HeroSection() {
@@ -26,15 +27,20 @@ export default function HeroSection() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3"
-              >
-                Book Now
-              </Button>
-              <Button size="lg" variant="outline" className="px-8 py-3">
-                View Fleet
-              </Button>
+              <Link href="/book">
+                <Button
+                  size="lg"
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3"
+                >
+                  Book Now
+                </Button>
+              </Link>
+
+              <Link href="/list">
+                <Button size="lg" variant="outline" className="px-8 py-3">
+                  View Fleet
+                </Button>
+              </Link>
             </div>
 
             <div className="flex items-center space-x-8 pt-4">

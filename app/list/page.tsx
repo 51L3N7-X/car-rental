@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import React from "react";
 
-export default function page() {
+export default function Page() {
   async function fetchCars(): Promise<Car[]> {
     try {
       const response = await fetch(`${window.location.origin}/api/cars`, {

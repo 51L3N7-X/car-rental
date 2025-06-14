@@ -7,22 +7,25 @@ import { ModeToggle } from "./theme-toggle";
 import { ComponentProps } from "react";
 import { signOut, useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
+import { Car } from "lucide-react";
 
 export function NavBar() {
   const session = useSession();
   const pathname = usePathname();
 
   const isInDashboard = pathname.startsWith("/dashboard") && session.data?.user;
-const navItems = isInDashboard
-  ? [
-      { name: "Home", href: "/" },
-      { name: "Bookings", href: "/dashboard/books" },
-    ]
-  : [
-      { name: "Book", href: "/book" },
-      { name: "Car List", href: "/list" },
-      ...(session.data?.user ? [{ name: "Dashboard", href: "/dashboard" }] : []),
-    ];
+  const navItems = isInDashboard
+    ? [
+        { name: "Home", href: "/" },
+        { name: "Bookings", href: "/dashboard/books" },
+      ]
+    : [
+        { name: "Book", href: "/book" },
+        { name: "Car List", href: "/list" },
+        ...(session.data?.user
+          ? [{ name: "Dashboard", href: "/dashboard" }]
+          : []),
+      ];
 
   return (
     <header className="flex h-20 w-full shrink-0 items-center px-4 md:px-6">
@@ -76,8 +79,10 @@ const navItems = isInDashboard
 
       {/* Desktop Nav */}
       <Link href="/" className="mr-6 hidden lg:flex" prefetch={false}>
-        <MountainIcon className="h-6 w-6" />
-        <span className="sr-only">Logo</span>
+        <div className="flex items-center space-x-2">
+          <Car className="h-8 w-8 text-blue-600" />
+          <span className="text-2xl font-bold text-gray-900">RentCar</span>
+        </div>
       </Link>
       <nav className="ml-auto hidden lg:flex gap-6">
         {navItems.map((item) => (

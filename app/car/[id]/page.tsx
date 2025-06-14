@@ -77,7 +77,7 @@ export default function CarPage() {
 
       {car.available ? (
         <Link href={`/book?carId=${car.id}`}>
-          <Button size="lg" className="mt-4">
+          <Button size="lg" className="mt-4 bg-blue-600">
             Book This Car
           </Button>
         </Link>
