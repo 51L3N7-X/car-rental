@@ -12,5 +12,5 @@ export default async function DashboardLayout({
     redirect("/login");
   }
 
-  return children;
+  return <div className="container mx-auto p-4">{children}</div>;
 }

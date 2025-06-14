@@ -14,6 +14,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useMutation } from "@tanstack/react-query";
+import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
 type BookingInput = {
   userName: string;
@@ -22,7 +24,6 @@ type BookingInput = {
   startDate: string;
   endDate: string;
 };
-  
 
 const bookingSchema = z.object({
   userName: z.string().min(2, "Name is too short"),
@@ -33,6 +34,9 @@ const bookingSchema = z.object({
 });
 
 export default function BookCarPage() {
+  const searchParams = useSearchParams();
+  const carIdFromQuery = searchParams.get("carId") || "";
+
   const form = useForm<BookingInput>({
     resolver: zodResolver(bookingSchema),
     defaultValues: {
@@ -44,8 +48,14 @@ export default function BookCarPage() {
     },
   });
 
+  useEffect(() => {
+    if (carIdFromQuery) {
+      form.setValue("carId", carIdFromQuery);
+    }
+  }, [carIdFromQuery, form]);
+
   const mutation = useMutation({
-    mutationFn: async (data : BookingInput) => {
+    mutationFn: async (data: BookingInput) => {
       const res = await fetch("/api/bookings", {
         method: "POST",
         headers: {

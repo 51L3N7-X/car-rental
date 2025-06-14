@@ -18,12 +18,15 @@ import { DeleteDialog } from "@/components/DeleteDialog";
 import { Separator } from "@/components/ui/separator";
 import { Car } from "@/types/public";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useSession } from "next-auth/react";
 
 export default function DashboardPage() {
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [editingCar, setEditingCar] = useState<Car | null>(null);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [carIdToDelete, setCarIdToDelete] = useState<string | null>(null);
+
+  const { data: session } = useSession();
 
   const queryClient = useQueryClient();
 
@@ -56,7 +59,6 @@ export default function DashboardPage() {
     error,
   } = useQuery({ queryKey: ["cars"], queryFn: fetchCars });
 
-  // Mutation to update availability status
   const updateAvailabilityMutation = useMutation({
     mutationFn: async ({
       id,
@@ -66,9 +68,10 @@ export default function DashboardPage() {
       available: boolean;
     }) => {
       const response = await fetch(`/api/cars/${id}`, {
-        method: "PATCH", // or PUT depending on your API
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${session?.accessToken}`,
         },
         body: JSON.stringify({ available }),
       });
@@ -103,7 +106,7 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div>
       <h1 className="text-2xl font-semibold mb-4">Cars Menu</h1>
       <Button className="mb-4" onClick={handleAddClick}>
         Add Car

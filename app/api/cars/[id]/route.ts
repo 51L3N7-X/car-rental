@@ -7,16 +7,10 @@ import jwt from "jsonwebtoken";
 const SECRET_KEY = process.env.NEXTAUTH_SECRET as string;
 
 export async function GET(
-  request: Request,
+  _: Request,
   { params }: { params: { id: string } }
 ) {
   try {
-    const token = request.headers.get("authorization")?.split(" ")[1];
-
-    if (!token) {
-      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-    }
-    jwt.verify(token, SECRET_KEY);
     const car = await db.select().from(cars).where(eq(cars.id, params.id));
     return NextResponse.json(car[0] || {});
   } catch (e) {
