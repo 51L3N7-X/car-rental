@@ -13,6 +13,7 @@ import "swiper/css/pagination";
 import "./swiper.css";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 const Action = () => {
   return (
@@ -20,8 +21,8 @@ const Action = () => {
       {
         //left-4 bottom-[20vh]
       }
-      <h1 className="text-3xl mb-2 tracking-tighter md:text-6xl md:mb-3">
-        BE DISTINGUISHED
+      <h1 className="text-3xl mb-2 tracking-tighter md:text-6xl md:mb-3 uppercase">
+        Be luxurious
       </h1>
       <Button
         variant="outline"
@@ -29,7 +30,10 @@ const Action = () => {
         // w-260 h-50}
         size="lg"
       >
-        <p className="text-lg font-medium md:text-xl">ORDER NOW</p>
+        <Link href="/book">
+          <p className="text-lg font-medium md:text-xl uppercase">Book NOW</p>
+        </Link>
+
         {
           // text-xl
         }
@@ -67,15 +71,15 @@ export default function SwiperComponent() {
       >
         <SwiperSlide className="overflow-hidden relative font-bold">
           <Action></Action>
-          <HeroImage src="/1.jpg"></HeroImage>
+          <HeroImage src="/1.webp"></HeroImage>
         </SwiperSlide>
         <SwiperSlide className="overflow-hidden relative font-bold">
           <Action></Action>
-          <HeroImage src="/2.jpg"></HeroImage>
+          <HeroImage src="/2.webp"></HeroImage>
         </SwiperSlide>
         <SwiperSlide className="overflow-hidden relative font-bold">
           <Action></Action>
-          <HeroImage src="/3.jpg"></HeroImage>
+          <HeroImage src="/3.jpeg"></HeroImage>
         </SwiperSlide>
       </Swiper>
     </div>
