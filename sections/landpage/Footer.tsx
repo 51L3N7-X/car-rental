@@ -150,7 +150,7 @@ export default function Footer() {
                 <span className="text-gray-400 dark:text-gray-600">
                   Al Jazaer Street
                   <br />
-                  Sana'a, Yemen
+                  Sana&apos;a, Yemen
                 </span>
               </div>
             </div>

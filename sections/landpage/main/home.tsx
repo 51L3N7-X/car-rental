@@ -13,7 +13,6 @@ export default function LandPageHome() {
       <WhyUs></WhyUs>
       <PopularCars></PopularCars>
       <HowItWorks></HowItWorks>
-      <Footer></Footer>
     </div>
   );
 }
