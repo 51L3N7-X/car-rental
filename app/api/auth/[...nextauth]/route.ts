@@ -18,8 +18,8 @@ const handler = NextAuth({
         if (!credentials) return null;
         // Replace this with actual backend authentication logic
         if (
-          credentials.username === "admin" &&
-          credentials.password === "password"
+          credentials.username === process.env.ADMIN_USERNAME &&
+          credentials.password === process.env.ADMIN_PASSWORD
         ) {
           const user = { id: "1", name: "Admin User" };
           const token = jwt.sign(user, SECRET_KEY, {
