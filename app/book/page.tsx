@@ -111,9 +111,9 @@ export default function BookCarPage() {
             name="carId"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Car ID</FormLabel>
+                <FormLabel htmlFor="carId">Car ID</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter Car ID" {...field} />
+                  <Input id="carId" placeholder="Enter Car ID" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

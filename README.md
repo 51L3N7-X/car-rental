@@ -1,3 +1,4 @@
+
 ## 🚗 Car Rental Web App
 
 A simple and modern car rental app built with **Next.js**. Users can explore available cars, view details, and book directly online. Admins can log in to manage listings and view bookings through a secure dashboard.
@@ -11,6 +12,8 @@ This project uses:
 * **Turso** (SQLite-based) for the database
 * **Tailwind CSS** + **ShadCN** for responsive, beautiful UI components
 * **React Swiper** for a sleek landing page slider
+* **React Query** for data fetching and mutations
+* **React Hook Form** with **Zod** for form validation
 
 #### 🔧 Features
 
@@ -21,12 +24,13 @@ This project uses:
 * 🔐 Dashboard for adding cars and viewing bookings (admin only)
 * 📤 Image uploads for car entries
 * 🧾 Simple admin login with environment-based credentials
+* ✅ Comprehensive test coverage for critical flows
 
 ---
 
 ## ⚙️ Getting Started (Local Setup)
 
-Here’s how to run the project locally:
+Here's how to run the project locally:
 
 ### 1. Clone the project
 
@@ -50,7 +54,7 @@ Create a `.env` file based on `.env.example` and fill in your credentials:
 
 ```env
 TURSO_DATABASE_URL=
-TURSO_AUTH_TOKEN=
+TURSAUTH_TOKEN=
 AUTH_SECRET=
 NEXTAUTH_SECRET=
 UPLOADTHING_TOKEN=
@@ -80,3 +84,50 @@ docker run -p 3000:3000 --env-file .env car-rental-app
 ```
 
 ---
+
+## 🧪 Testing
+
+The project includes Jest and React Testing Library for comprehensive testing:
+
+### Running Tests
+
+```bash
+npm test
+# or for watch mode
+npm test -- --watch
+```
+
+### Test Coverage
+
+```bash
+npm test -- --coverage
+```
+
+### Key Test Cases
+
+1. **Booking Form Validation**
+   - Empty field validations
+   - Date range validation
+   - Successful submission flow
+
+### Testing Stack
+
+- **Jest** - Test runner
+- **React Testing Library** - Component testing
+- **MSW** - API mocking (optional)
+- **next-router-mock** - Router simulation
+
+---
+
+## 🛠️ Tech Stack
+
+| Category       | Technology                  |
+|----------------|-----------------------------|
+| Framework      | Next.js 14 (App Router)     |
+| Styling        | Tailwind CSS + ShadCN       |
+| Database       | Turso (SQLite)              |
+| ORM            | Drizzle                     |
+| Authentication | NextAuth.js                 |
+| Testing        | Jest + React Testing Library|
+| Form Handling  | React Hook Form + Zod       |
+| State          | React Query                 |
